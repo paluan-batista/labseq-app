@@ -1,0 +1,11 @@
+version: "3"
+services:
+  labsaq-app:
+    image: api.labsaq-app
+    network_mode: bridge
+    container_name: labsaq-app
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    restart: unless-stopped
