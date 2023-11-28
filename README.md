@@ -1,3 +1,6 @@
+[![codecov](https://codecov.io/gh/paluan-batista/labseq-app/branch/master/graph/badge.svg)](https://codecov.io/gh/paluan-batista/labseq-app/)
+
+
 # Labseq App
 
 
