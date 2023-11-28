@@ -1,4 +1,4 @@
-[![codecov](https://app.codecov.io/gh/paluan-batista/labseq-app/branch/main/graph/badge.svg)](https://codecov.io/gh/paluan-batista/labseq-app/)
+[![codecov](https://codecov.io/gh/paluan-batista/labseq-app/branch/main/graph/badge.svg?token=1920e986-e3e0-45eb-b649-ae0332094b19)](https://codecov.io/gh/paluan-batista/labseq-app)
 # Labseq App
 
 
