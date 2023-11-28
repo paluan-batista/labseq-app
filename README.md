@@ -50,8 +50,5 @@ You can run the LabSeq API using Docker. Follow these steps:
 - **Java**: Use Java 17 to build and run the application.
 - **Spring Boot**: Utilizes Spring Boot framework to create the RESTful API.
 
-### Contributions
-Contributions and feature requests are welcome! Please fork the repository and submit a pull request.
-
 ### License
 This project is licensed under the [MIT License](LICENSE).
