@@ -1,22 +1,16 @@
 package com.labseq.config;
 
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.RequestHandler;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.function.Predicate;
 
 @Configuration
-@EnableSwagger2
 public class SwaggerConfig {
 
     @Value("${developer.name}")
@@ -45,18 +39,18 @@ public class SwaggerConfig {
 
 
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(apis()).paths(PathSelectors.any())
-                .build().apiInfo(apiInfo());
-    }
-
-    private Predicate<RequestHandler> apis() {
-        return RequestHandlerSelectors.basePackage("com.labseq-app.controller");
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().contact(new Contact(name, linkedin, email)).description(description)
-                .license(license).licenseUrl(licenseUrl).version(version).title(title).build();
+    public OpenAPI openAPI(@Value("${springdoc.version}") String appVersion) {
+        return new OpenAPI()
+                .components((new Components().addSecuritySchemes("basicScheme",
+                                                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic"))))
+                .info(new Info()
+                              .contact(new Contact().name(name).email(email).url(linkedin))
+                              .title(title)
+                              .description(description)
+                              .version(version)
+                              .termsOfService("Termo de uso: Open Source")
+                              .license(new License().name(license))
+                );
     }
 
 }
