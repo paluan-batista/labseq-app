@@ -1,5 +1,6 @@
 package com.labseq.service;
 
+import com.labseq.exception.NegativeIndexException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,12 +11,12 @@ class LabSeqServiceImplTest {
     private LabSeqService labSeqService;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         labSeqService = new LabSeqServiceImpl();
     }
 
     @Test
-    public void testCalculateLabSeqValueForFirstFourIndices() {
+    void testCalculateLabSeqValueForFirstFourIndices() {
         assertEquals(0, labSeqService.calculateLabSeqValue(0));
         assertEquals(1, labSeqService.calculateLabSeqValue(1));
         assertEquals(0, labSeqService.calculateLabSeqValue(2));
@@ -23,22 +24,22 @@ class LabSeqServiceImplTest {
     }
 
     @Test
-    public void testCalculateLabSeqValueForFifthIndex() {
+    void testCalculateLabSeqValueForFifthIndex() {
         assertEquals(1, labSeqService.calculateLabSeqValue(4));
     }
 
     @Test
-    public void testCalculateLabSeqValueForLargeIndex() {
+    void testCalculateLabSeqValueForLargeIndex() {
         assertEquals(3, labSeqService.calculateLabSeqValue(10));
     }
 
     @Test
-    public void testCalculateLabSeqValueForNegativeIndex() {
-        assertThrows(NegativeArraySizeException.class, () -> labSeqService.calculateLabSeqValue(-1));
+    void testCalculateLabSeqValueForNegativeIndex() {
+        assertThrows(NegativeIndexException.class, () -> labSeqService.calculateLabSeqValue(-1));
     }
 
     @Test
-    public void testCalculateLabSeqValuePerformance() {
+    void testCalculateLabSeqValuePerformance() {
         long startTime = System.currentTimeMillis();
         labSeqService.calculateLabSeqValue(110);
         long endTime = System.currentTimeMillis();
